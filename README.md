@@ -2,7 +2,9 @@
 > 基于 C++17 多线程与微面元物理模型的简易实时路径追踪渲染器 
 
 [Image of a high quality PBR sphere render demonstration]
-
+<img width="1596" height="926" alt="image" src="https://github.com/user-attachments/assets/b4da4833-fff8-4734-bcc3-b00404feaf3e" />
+[Image of a luminous sphere render demonstration]
+<img width="1602" height="939" alt="image" src="https://github.com/user-attachments/assets/06b9f886-5d4e-4ad3-aa8f-c08ee48da7bc" />
 
 ## 📖 Introduction (项目简介)
 本项目为基于 C++ 构建的 **CPU 软件光线追踪器**。重点验证了基于物理的渲染（PBR）核心光照数学模型与蒙特卡洛积分算法。
