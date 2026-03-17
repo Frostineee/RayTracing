@@ -11,10 +11,18 @@
 class Renderer
 {
 public:
+	enum class ERayTracingMode
+	{
+		E_luminousMaterial,
+		E_PBRPathTracing
+	};
+
 	struct Settings
 	{
 		bool Accumulate = true;
 		bool SlowRandom = true;
+		ERayTracingMode Modes = ERayTracingMode::E_luminousMaterial;
+		bool PhysicalCamera = false;
 	};
 public:
 	Renderer() = default;
@@ -27,6 +35,7 @@ public:
 
 	void ResetframeIndex() { m_FrameIndex = 1; }
 	Settings& GetSettings() { return m_Settings; }
+
 private:
 	struct HitPayload
 	{

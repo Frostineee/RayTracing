@@ -26,4 +26,5 @@ struct Scene       //场景中包含所有的球体及对应的材质
 {
 	std::vector<Sphere> Spheres;
 	std::vector<Material> Materials;
+	glm::vec3 SkyColor{ 0.55f, 0.8f, 0.95f };
 };

@@ -66,6 +66,7 @@ public:
 	{
 		ImGui::Begin("Settings");
 		ImGui::Text("Last render: %.3fms", m_LastRenderTime);
+
 		if (ImGui::Button("Render"))
 		{
 			Render();
@@ -73,6 +74,15 @@ public:
 
 		ImGui::Checkbox("Accumulate", &m_Renderer.GetSettings().Accumulate);
 		ImGui::Checkbox("Slow Random", &m_Renderer.GetSettings().SlowRandom);
+		ImGui::Checkbox("Physical Camera", &m_Renderer.GetSettings().PhysicalCamera);
+		const char* modeStrings[] = { "luminousMaterial", "PathTracingBaseOnPBR" };
+
+		int currentModeIndex = (int)m_Renderer.GetSettings().Modes;
+		if (ImGui::Combo("RayTracing Mode", &currentModeIndex, modeStrings, IM_ARRAYSIZE(modeStrings)))
+		{
+			m_Renderer.GetSettings().Modes = (Renderer::ERayTracingMode)currentModeIndex;
+			m_Renderer.ResetframeIndex();
+		}
 
 		if (ImGui::Button("Reset"))
 		{
@@ -110,7 +120,8 @@ public:
 			ImGui::PopID();
 		}
 
-		
+		ImGui::ColorEdit3("SkyBoxColor", glm::value_ptr(m_Scene.SkyColor));
+
 		ImGui::End();
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
